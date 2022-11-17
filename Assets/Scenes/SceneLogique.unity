@@ -2141,7 +2141,7 @@ GameObject:
   - component: {fileID: 1141777071}
   m_Layer: 0
   m_Name: HealthBarInteractions
-  m_TagString: Untagged
+  m_TagString: HealthBarInteractions
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2540,6 +2540,7 @@ GameObject:
   - component: {fileID: 1528093169}
   - component: {fileID: 1528093168}
   - component: {fileID: 1528093174}
+  - component: {fileID: 1528093175}
   m_Layer: 0
   m_Name: ThirdPersonController
   m_TagString: Untagged
@@ -2661,6 +2662,18 @@ MonoBehaviour:
   health: 3
   maxHealth: 3
   maxTotalHealth: 5
+--- !u!114 &1528093175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528093167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37647ed994ae4b044a727bca50efc772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1533174872
 GameObject:
   m_ObjectHideFlags: 0

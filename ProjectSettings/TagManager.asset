@@ -7,6 +7,7 @@ TagManager:
   - sol
   - Fire
   - Canvas
+  - HealthBarInteractions
   layers:
   - Default
   - TransparentFX
