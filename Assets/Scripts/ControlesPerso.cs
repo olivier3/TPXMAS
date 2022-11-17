@@ -7,11 +7,13 @@ public class ControlesPerso : MonoBehaviour
     public Animator animator;
     private bool solToucher = false;
     public int vitesseSaut = 375;
+    public float vitesseDeplacement = 0.0000001f;
 
     // Start is called before the first frame update
     void Start()
     {
         animator.SetBool("is_jumping", false);
+        animator.SetBool("is_falling", false);
     }
 
     // Update is called once per frame
@@ -24,13 +26,41 @@ public class ControlesPerso : MonoBehaviour
             animator.SetTrigger("Jump");
             //animator.SetBool("is_jumping", true);
         }
+
+        // marcher vers l'avant
+        if (Input.GetKey(KeyCode.W))
+        {
+            this.GetComponent<Rigidbody>().AddForce(Vector3.forward * vitesseDeplacement);
+        }
+
+        if (!solToucher)
+        {
+            // dans les airs
+            if (this.gameObject.GetComponent<Rigidbody>().velocity.y > 0)
+            {
+                // monte verticalement
+                animator.SetBool("is_falling", false);
+                animator.SetBool("is_jumping", true);
+            }
+            else
+            {
+                //descend
+                animator.SetBool("is_jumping", false);
+                animator.SetBool("is_falling", true);
+            }
+        }
+        else
+        {
+            // a terre
+            animator.SetBool("is_jumping", false);
+            animator.SetBool("is_falling", false);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.tag == "sol")
         {
-            animator.SetBool("is_jumping", false);
             solToucher = true;
         }
     }
@@ -47,7 +77,6 @@ public class ControlesPerso : MonoBehaviour
     {
         if (collision.collider.tag == "sol")
         {
-            animator.SetBool("is_jumping", true);
             solToucher = false;
         }
     }
