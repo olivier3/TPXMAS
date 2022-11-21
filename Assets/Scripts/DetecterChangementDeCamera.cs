@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public class DetecterChangementDeCamera : MonoBehaviour
 {
@@ -20,11 +21,33 @@ public class DetecterChangementDeCamera : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        objectCamera.SetActive(true);
+        if (collider.tag == "Player")
+        {
+            // affiche cette camera secondaire
+            objectCamera.SetActive(true);
+            // modifie les controles pour avec cette camera secondaire
+            // StartCoroutine = pour ajouter delai entre changements de controles et pour pouvoir passer des parametres
+            StartCoroutine(ModifierLaCameraSurLaquelleBaserLesControles(collider, objectCamera.GetComponent<Camera>()));
+        }
     }
 
     private void OnTriggerExit(Collider collider)
     {
-        objectCamera.SetActive(false);
+        if (collider.tag == "Player")
+        {
+            // affiche la camera principale
+            objectCamera.SetActive(false);
+            // modifie les controles pour avec la camera principale (Camera.main = recupere la camera principale selon le tag)
+            // StartCoroutine = pour ajouter delai entre changements de controles et pour pouvoir passer des parametres
+            StartCoroutine(ModifierLaCameraSurLaquelleBaserLesControles(collider, Camera.main));
+        }
+    }
+
+    private IEnumerator ModifierLaCameraSurLaquelleBaserLesControles(Collider collider, Camera camera)
+    {
+        // fait attendre le systeme une demi seconde avant de changer les controles
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        collider.gameObject.GetComponent<ThirdPersonUserControlModified>().m_Cam = camera.transform;
     }
 }

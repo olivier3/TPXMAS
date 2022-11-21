@@ -5,10 +5,10 @@ using UnityStandardAssets.CrossPlatformInput;
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
     [RequireComponent(typeof(ThirdPersonCharacter))]
-    public class ThirdPersonUserControl : MonoBehaviour
+    public class ThirdPersonUserControlModified : MonoBehaviour
     {
         private ThirdPersonCharacter m_Character; // A reference to the ThirdPersonCharacter on the object
-        private Transform m_Cam;                  // A reference to the main camera in the scenes transform
+        public Transform m_Cam;                  // A reference to the main camera ou a une camera secondaire in the scenes transform 
         private Vector3 m_CamForward;             // The current forward direction of the camera
         private Vector3 m_Move;
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
@@ -30,19 +30,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
             // get the third person character ( this should never be null due to require component )
             m_Character = GetComponent<ThirdPersonCharacter>();
-        }
-
-        /**
-         * Pour changer de camera sur laquelle baser les mouvements du personnage.
-         * 
-         * @author Philippe Michon.
-         */
-        private void OnEnable()
-        {
-            if (objetCameraDistante != null)
-            {
-                m_Cam = objetCameraDistante.GetComponent<Camera>().transform;
-            }
         }
 
 
