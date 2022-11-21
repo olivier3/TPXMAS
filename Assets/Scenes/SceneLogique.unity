@@ -1471,6 +1471,67 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &795102929
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4826233249734144, guid: d40c9fe439b899e429d008e6d3c1ae38, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826233249734144, guid: d40c9fe439b899e429d008e6d3c1ae38, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826233249734144, guid: d40c9fe439b899e429d008e6d3c1ae38, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 150.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826233249734144, guid: d40c9fe439b899e429d008e6d3c1ae38, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826233249734144, guid: d40c9fe439b899e429d008e6d3c1ae38, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826233249734144, guid: d40c9fe439b899e429d008e6d3c1ae38, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826233249734144, guid: d40c9fe439b899e429d008e6d3c1ae38, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826233249734144, guid: d40c9fe439b899e429d008e6d3c1ae38, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198555243804112566, guid: d40c9fe439b899e429d008e6d3c1ae38, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 198555243804112566, guid: d40c9fe439b899e429d008e6d3c1ae38, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 198555243804112566, guid: d40c9fe439b899e429d008e6d3c1ae38, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 198555243804112566, guid: d40c9fe439b899e429d008e6d3c1ae38, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 199908613945276386, guid: d40c9fe439b899e429d008e6d3c1ae38, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d40c9fe439b899e429d008e6d3c1ae38, type: 3}
 --- !u!1 &809560567
 GameObject:
   m_ObjectHideFlags: 0
@@ -2723,6 +2784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521b611700410be45810047f0a74e899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Cam: {fileID: 0}
   objetCameraDistante: {fileID: 0}
 --- !u!136 &1528093170
 CapsuleCollider:
