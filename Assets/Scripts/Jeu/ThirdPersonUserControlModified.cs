@@ -12,7 +12,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private Vector3 m_CamForward;             // The current forward direction of the camera
         private Vector3 m_Move;
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
-        public GameObject objetCameraDistante = null;
+
+        public AudioSource audioSaut;
 
         private void Start()
         {
@@ -38,6 +39,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             if (!m_Jump)
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+
+                if (m_Jump)
+                {
+                    // lorsqu'il saute essaie de sauter (peut difficilement faire mieux parce que l'autre script semble non modifiable
+                    // sans changements majeurs)
+                    audioSaut.Play();
+                }
             }
         }
 
