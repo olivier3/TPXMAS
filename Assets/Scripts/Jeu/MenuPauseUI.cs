@@ -7,7 +7,6 @@ public class MenuPauseUI : MonoBehaviour
     private GameObject menuPrincipalPause;
     private GameObject menuObjectifs;
     private GameObject menuCarte;
-    private Camera cameraCarte;
 
     // Start is called before the first frame update
     void Start()
@@ -15,8 +14,6 @@ public class MenuPauseUI : MonoBehaviour
         menuPrincipalPause = this.transform.Find("MainPause").gameObject;
         menuObjectifs = this.transform.Find("Objectifs").gameObject;
         menuCarte = this.transform.Find("MiniCarte").gameObject;
-        cameraCarte = menuCarte.transform.Find("CameraCarte").gameObject.GetComponent<Camera>();
-        //cameraCarte.aspect = 1;
     }
 
     // Update is called once per frame

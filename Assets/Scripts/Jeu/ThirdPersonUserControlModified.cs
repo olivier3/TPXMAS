@@ -7,10 +7,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
     [RequireComponent(typeof(ThirdPersonCharacter))]
     public class ThirdPersonUserControlModified : MonoBehaviour
     {
-        private ThirdPersonCharacter m_Character; // A reference to the ThirdPersonCharacter on the object
+        public ThirdPersonCharacter m_Character; // A reference to the ThirdPersonCharacter on the object
         public Transform m_Cam;                  // A reference to the main camera ou a une camera secondaire in the scenes transform 
         private Vector3 m_CamForward;             // The current forward direction of the camera
-        private Vector3 m_Move;
+        public Vector3 m_Move;
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
 
         public AudioSource audioSaut;
