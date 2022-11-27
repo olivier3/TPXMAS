@@ -7,6 +7,7 @@ public class MenuPauseUI : MonoBehaviour
     private GameObject menuPrincipalPause;
     private GameObject menuObjectifs;
     private GameObject menuCarte;
+    public GameObject cameraCarte;
 
     // Start is called before the first frame update
     void Start()
@@ -38,11 +39,13 @@ public class MenuPauseUI : MonoBehaviour
     {
         menuPrincipalPause.SetActive(false);
         menuCarte.SetActive(true);
+        cameraCarte.SetActive(true);
     }
 
     public void RevenirDeCarte()
     {
         menuPrincipalPause.SetActive(true);
         menuCarte.SetActive(false);
+        cameraCarte.SetActive(false);
     }
 }

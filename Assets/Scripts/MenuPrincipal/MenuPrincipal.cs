@@ -19,7 +19,7 @@ public class MenuPrincipal : MonoBehaviour
 
     public void Jouer()
     {
-        SceneManager.LoadScene("SceneLogique"); // TODO nom de scene a changer
+        SceneManager.LoadScene("SampleScene");
     }
 
     public void Quitter()
