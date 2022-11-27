@@ -8,6 +8,8 @@ public class ScenariosPersoBlesse : MonoBehaviour
 {
     private Vector3 dernierEmplacementSauvegarde;
     public float hauteurDeMortParTomber = -100;
+    public AudioSource audioSourceMusiquePrincipal;
+    public AudioSource audioSourceMort;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +24,8 @@ public class ScenariosPersoBlesse : MonoBehaviour
         {
             // meurt
             GameObject.FindGameObjectWithTag("HealthBarInteractions").GetComponent<HealthBarHUDTester>().Hurt(100000000000000000);
-            Invoke("Respawn", 1);
+
+            Mourir();
         }
     }
 
@@ -31,8 +34,19 @@ public class ScenariosPersoBlesse : MonoBehaviour
         dernierEmplacementSauvegarde = position;
     }
 
-    public void Respawn()
+    public void Mourir()
     {
+        // pour jouer le son de mort
+        audioSourceMort.Play();
+
+        Invoke("Respawn", 1);
+    }
+
+    private void Respawn()
+    {
+        // pour faire recommencer la musique principale
+        audioSourceMusiquePrincipal.Play();
+
         // pour teleporter le personnage au dernier checkpoint
         this.transform.position = new Vector3(dernierEmplacementSauvegarde.x,
             dernierEmplacementSauvegarde.y + 5, // il faut que ca soit assez haut pour ne pas glitcher
