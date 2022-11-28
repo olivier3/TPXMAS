@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,11 +9,15 @@ public class GererEtatJeu : MonoBehaviour
     private GameObject menuPause;
     private AudioSource musiqueMenuPause;
     private bool isPaused = false; // pour pouvoir changer entre en pause et non en pause
+    private int nbCanne = 0;
+    public TextMeshProUGUI txtBox;
+    private GameObject menuVictoire;
 
     // Start is called before the first frame update
     void Start()
     {
         menuPause = this.gameObject.transform.Find("PanelPause").gameObject;
+        menuVictoire = this.gameObject.transform.Find("PanelVictoire").gameObject;
         musiqueMenuPause = this.gameObject.GetComponent<AudioSource>();
     }
 
@@ -38,6 +43,18 @@ public class GererEtatJeu : MonoBehaviour
 
             // changer effets sonores selon si en pause ou non
             AlternerEntreSonsDeJeuEtDeMenuPause();
+        }
+    }
+
+    public void Score()
+    {
+        nbCanne++;
+        txtBox.text = $"Cannes récupérés: {nbCanne}/5";
+
+        if (nbCanne >= 5)
+        {
+            menuVictoire.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 
@@ -73,6 +90,8 @@ public class GererEtatJeu : MonoBehaviour
     public void RevenirAuMenu()
     {
         SceneManager.LoadScene("SceneMenuPrincipal");
+        // il faut unload la scene pour pouvoir y retourner plus tard
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
     }
 
     public void Quitter()
