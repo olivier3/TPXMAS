@@ -20,6 +20,8 @@ public class MenuPrincipal : MonoBehaviour
     public void Jouer()
     {
         SceneManager.LoadScene("SampleScene");
+        // il faut unload la scene pour pouvoir y retourner plus tard
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
     }
 
     public void Quitter()

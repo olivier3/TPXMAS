@@ -73,6 +73,8 @@ public class GererEtatJeu : MonoBehaviour
     public void RevenirAuMenu()
     {
         SceneManager.LoadScene("SceneMenuPrincipal");
+        // il faut unload la scene pour pouvoir y retourner plus tard
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
     }
 
     public void Quitter()
