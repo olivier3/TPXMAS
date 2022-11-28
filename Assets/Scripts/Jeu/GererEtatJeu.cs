@@ -11,6 +11,7 @@ public class GererEtatJeu : MonoBehaviour
     private bool isPaused = false; // pour pouvoir changer entre en pause et non en pause
     private int nbCanne = 0;
     public TextMeshProUGUI txtBox;
+    public GameObject cameraCarte;
     private GameObject menuVictoire;
 
     // Start is called before the first frame update
@@ -36,7 +37,15 @@ public class GererEtatJeu : MonoBehaviour
             }
             else
             {
+                // remettre l'ecran principal de pause par defaut
+                menuPause.transform.Find("MainPause").gameObject.SetActive(true);
+                menuPause.transform.Find("Objectifs").gameObject.SetActive(false); ;
+                menuPause.transform.Find("MiniCarte").gameObject.SetActive(false);
+                cameraCarte.SetActive(false);
+
+                // fermer menu de pause
                 menuPause.SetActive(false);
+
                 // remet actif la majorite des choses
                 Time.timeScale = 1f;
             }
