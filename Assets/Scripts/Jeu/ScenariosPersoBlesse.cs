@@ -10,6 +10,10 @@ public class ScenariosPersoBlesse : MonoBehaviour
     public float hauteurDeMortParTomber = -100;
     public AudioSource audioSourceMusiquePrincipal;
     public AudioSource audioSourceMort;
+    float _hitTime = 1;
+    float _hitTimer = 0;
+    bool _canHit = true;
+    int vie = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +24,12 @@ public class ScenariosPersoBlesse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Increment the hit timer
+        _hitTimer += Time.deltaTime;
+
+        if (_hitTimer > _hitTime)
+            _canHit = true;
+
         if (this.transform.position.y < hauteurDeMortParTomber)
         {
             // meurt
@@ -32,6 +42,24 @@ public class ScenariosPersoBlesse : MonoBehaviour
     public void SauvegarderLaPosition(Vector3 position)
     {
         dernierEmplacementSauvegarde = position;
+    }
+
+    public void Blesser()
+    {
+        // If can't be hit yet, return
+        if (!_canHit)
+            return;
+
+        GameObject.FindGameObjectWithTag("HealthBarInteractions").GetComponent<HealthBarHUDTester>().Hurt(1);
+
+        vie--;
+
+        if (vie <= 0) { 
+            Mourir();
+        }
+
+        // Reset the hit timer when taking damage
+        _hitTimer = 0;
     }
 
     public void Mourir()
