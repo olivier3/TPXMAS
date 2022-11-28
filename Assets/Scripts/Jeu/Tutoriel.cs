@@ -7,6 +7,7 @@ public class Tutoriel : MonoBehaviour
     private GameObject tutoHistoire;
     private GameObject tutoMouvements;
     private GameObject tutoSauts;
+    private GameObject tutoPause;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,7 @@ public class Tutoriel : MonoBehaviour
         tutoHistoire = this.transform.Find("Histoire").gameObject;
         tutoMouvements = this.transform.Find("Mouvements").gameObject;
         tutoSauts = this.transform.Find("Sauts").gameObject;
+        tutoPause = this.transform.Find("Pause").gameObject;
     }
 
     // Update is called once per frame
@@ -35,9 +37,15 @@ public class Tutoriel : MonoBehaviour
         tutoSauts.SetActive(true);
     }
 
-    public void CommencerJeu()
+    public void VersTutoPause()
     {
         tutoSauts.SetActive(false);
+        tutoPause.SetActive(true);
+    }
+
+    public void CommencerJeu()
+    {
+        tutoPause.SetActive(false);
         Time.timeScale = 1f;
         this.gameObject.SetActive(false);
     }
